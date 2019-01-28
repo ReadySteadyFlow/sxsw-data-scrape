@@ -1,6 +1,3 @@
-# sxsw-data-scrape
-Export info from https://schedule.sxsw.com/2019/events/track/Design.
-
 ## Dependencies
 - bs4 (pip install bs4)
 
