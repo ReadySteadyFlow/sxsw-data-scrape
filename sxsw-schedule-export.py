@@ -30,7 +30,11 @@ days = range (8,17)
 # just print the lines for export to Excel
 export = True
 
-schedule_url = 'https://schedule.sxsw.com/2019/events/track/Design'
+#schedule_url = 'https://schedule.sxsw.com/2019/events/track/Design'
+schedule_url = raw_input("Please insert track URL and press ENTER\n")
+trackName = schedule_url.rsplit('/', 1)[-1]
+
+targetFile = open(trackName+".txt","w+")
 
 socket = urllib.urlopen(schedule_url)
 schedule_html = socket.read()
@@ -112,9 +116,11 @@ for event in range(len(events)):
 
 	if export:
 		items = [event_index,title,sponsor,date,time,loc,room_number,address,track,format,type]
-		print delimiter.join(str(column) for column in items)
+		targetFile.write(delimiter.join(str(column) for column in items)+'\n')
+		targetFile.close
+		#print delimiter.join(str(column) for column in items)
+    
 
 	# print empty line
 	if not export:
 		print 
-
